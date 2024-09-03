@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Avanzada: Creación de una Página Web Profesional con Odoo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .step-content {
+            display: none;
+        }
+        .step-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-r from-blue-100 to-purple-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold text-center mb-8 text-indigo-800">Guía Avanzada: Creación de una Página Web Profesional con Odoo</h1>
+        
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-semibold mb-4 text-indigo-700">Enlaces Esenciales</h2>
+            <ul class="list-disc list-inside space-y-2">
+                <li><a href="https://www.odoo.com/r/1b3" target="_blank" class="text-blue-600 hover:underline">Odoo - Plataforma de creación web</a></li>
+                <li><a href="https://ideogram.ai/" target="_blank" class="text-blue-600 hover:underline">Ideogram - Generación de logos por IA</a></li>
+            </ul>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-semibold mb-4 text-indigo-700">Tutorial en Video</h2>
+                <div class="aspect-w-16 aspect-h-9 mb-4">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/EqNhQzyXKNI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <input type="number" id="timestamp" min="0" step="1" class="flex-grow border-2 border-indigo-300 rounded-md p-2 focus:ring-2 focus:ring-indigo-500 focus:border-transparent" placeholder="Ingrese minuto">
+                    <button onclick="goToTimestamp()" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition duration-300">Ir al minuto</button>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-semibold mb-4 text-indigo-700">Proceso Detallado</h2>
+                <div id="step-navigation" class="flex flex-wrap justify-center gap-2 mb-4">
+                    <!-- Los botones de los pasos se generarán dinámicamente con JavaScript -->
+                </div>
+                <div id="step-content" class="mt-4">
+                    <!-- El contenido de los pasos se generará dinámicamente con JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-12 bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-2xl font-semibold mb-4 text-indigo-700">Workbook Interactivo</h2>
+            <div id="workbook-content" class="space-y-4">
+                <!-- El contenido del workbook se generará dinámicamente con JavaScript -->
+            </div>
+            <div class="mt-6 flex justify-center">
+                <button onclick="printWorkbook()" class="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition duration-300">Imprimir Workbook</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const steps = [
+            {
+                title: "Registro y Acceso a Odoo",
+                content: `
+                    <p>1. Visita <a href="https://www.odoo.com/r/1b3" target="_blank" class="text-blue-600 hover:underline">Odoo</a> y regístrate para obtener una cuenta gratuita.</p>
+                    <p>2. Accede a la plataforma de creación web de Odoo.</p>
+                    <p>3. Selecciona la opción para crear un nuevo sitio web.</p>
+                    <p><strong>Tiempo en el video:</strong> 0:00 - 1:00</p>
+                `,
+                workbook: `
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700">Nombre de usuario en Odoo:</label>
+                        <input type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                `
+            },
+            {
+                title: "Configuración Inicial del Sitio",
+                content: `
+                    <p>1. Elige el tipo de sitio web: empresarial, tienda online, blog, eventos o plataforma de cursos.</p>
+                    <p>2. Selecciona el sector al que pertenece tu empresa (ej. agencia de viajes).</p>
+                    <p>3. Define el objetivo principal de tu sitio (ej. obtener leads, vender, informar).</p>
+                    <p>4. Sube tu logotipo o utiliza <a href="https://ideogram.ai/" target="_blank" class="text-blue-600 hover:underline">Ideogram</a> para crear uno con IA.</p>
+                    <p><strong>Tiempo en el video:</strong> 1:00 - 5:00</p>
+                `,
+                workbook: `
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700">Tipo de sitio web elegido:</label>
+                        <select class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            <option>Sitio web empresarial</option>
+                            <option>Tienda online</option>
+                            <option>Blog</option>
+                            <option>Eventos</option>
+                            <option>Plataforma de cursos</option>
+                        </select>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700">Sector de la empresa:</label>
+                        <input type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700">Objetivo principal del sitio:</label>
+                        <select class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            <option>Obtener leads</option>
+                            <option>Vender productos/servicios</option>
+                            <option>Informar a los clientes</option>
+                            <option>Desarrollar marca</option>
+                        </select>
+                    </div>
+                `
+            },
+            {
+                title: "Diseño y Personalización",
+                content: `
+                    <p>1. Selecciona una plantilla base que se ajuste a tu sector y objetivo.</p>
+                    <p>2. Personaliza la paleta de colores basada en tu logotipo o preferencias de marca.</p>
+                    <p>3. Elige las fuentes para títulos, subtítulos y texto general.</p>
+                    <p>4. Utiliza los bloques prediseñados de Odoo para estructurar tu contenido.</p>
+                    <p>5. Personaliza imágenes, textos y llamadas a la acción (CTA).</p>
+                    <p><strong>Tiempo en el video:</strong> 5:00 - 10:00</p>
+                `,
+                workbook: `
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700">Paleta de colores elegida:</label>
+                        <input type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Ej: #FF5733, #33FF57, #5733FF">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700">Fuente para títulos:</label>
+                        <input type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700">Fuente para texto general:</label>
+                        <input type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                `
+            },
+            {
+                title: "Estructura y Navegación",
+                content: `
+                    <p>1. Diseña la estructura de tu menú principal.</p>
+                    <p>2. Crea páginas adicionales según las necesidades de tu negocio.</p>
+                    <p>3. Configura el menú de navegación para una experiencia de usuario intuitiva.</p>
+                    <p>4. Añade enlaces internos para mejorar la navegación y el SEO.</p>
+                    <p><strong>Tiempo en el video:</strong> 10:00 - 12:00</p>
+                `,
+                workbook: `
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700">Estructura del menú principal:</label>
+                        <textarea class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" rows="4" placeholder="Ej: Inicio, Servicios, Sobre Nosotros, Contacto"></textarea>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700">Páginas adicionales a crear:</label>
+                        <input type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Ej: Blog, FAQ, Testimonios">
+                    </div>
+                `
+            },
+            {
+                title: "Optimización para Móviles",
+                content: `
+                    <p>1. Utiliza el modo de vista móvil de Odoo para revisar tu diseño.</p>
+                    <p>2. Ajusta el tamaño y disposición de los elementos para una mejor visualización en smartphones.</p>
+                    <p>3. Asegúrate de que los botones y enlaces sean fáciles de tocar en pantallas táctiles.</p>
+                    <p>4. Optimiza las imágenes para una carga rápida en dispositivos móviles.</p>
+                    <p><strong>Tiempo en el video:</strong> 12:00 - 15:00</p>
+                `,
+                workbook: `
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700">Elementos a ajustar para móviles:</label>
+                        <textarea class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" rows="3" placeholder="Ej: Reducir tamaño de imágenes, Simplificar menú, Aumentar tamaño de botones"></textarea>
+                    </div>
+                `
+            },
+            {
+                title: "SEO y Análisis",
+                content: `
+                    <p>1. Configura los títulos y metadescripciones para cada página.</p>
+                    <p>2. Utiliza palabras clave relevantes en tu contenido.</p>
+                    <p>3. Optimiza las URL de tus páginas para SEO.</p>
+                    <p>4. Conecta Google Analytics para seguimiento de tráfico.</p>
+                    <p>5. Configura Google Search Console para monitorear el rendimiento en búsquedas.</p>
+                    <p><strong>Tiempo en el video:</strong> 15:00 - 18:00</p>
+                `,
+                workbook: `
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700">Palabras clave principales:</label>
+                        <input type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Ej: agencia de viajes, paquetes turísticos, viajes personalizados">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700">Metadescripción de la página principal:</label>
+                        <textarea class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" rows="2"></textarea>
+                    </div>
+                `
+            },
+        {
+            title: "Configuración del Dominio",
+            content: `
+                <p>1. Elige un nombre de dominio que represente tu marca.</p>
+                <p>2. Verifica la disponibilidad del dominio deseado.</p>
+                <p>3. Registra el dominio gratuito por un año a través de Odoo.</p>
+                <p>4. Configura los registros DNS si es necesario.</p>
+                <p><strong>Tiempo en el video:</strong> 18:00 - 20:00</p>
+            `,
+            workbook: `
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700">Nombre de dominio deseado:</label>
+                    <input type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Ej: www.miempresa.com">
+                </div>
+            `
+        },
+        {
+            title: "Cumplimiento Legal",
+            content: `
+                <p>1. Activa la barra de cookies para cumplir con la RGPD.</p>
+                <p>2. Crea y enlaza las páginas de Política de Privacidad y Términos de Servicio.</p>
+                <p>3. Asegúrate de que tu sitio cumpla con las leyes de protección de datos aplicables.</p>
+                <p>4. Implementa formularios de contacto con consentimiento explícito para el uso de datos.</p>
+                <p><strong>Tiempo en el video:</strong> 20:00 - 22:00</p>
+            `,
+            workbook: `
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700">Elementos legales a incluir:</label>
+                    <textarea class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" rows="3" placeholder="Ej: Política de privacidad, Términos de servicio, Aviso de cookies"></textarea>
+                </div>
+            `
+        },
+        {
+            title: "Publicación y Mantenimiento",
+            content: `
+                <p>1. Realiza una revisión final de todo el contenido y funcionalidades.</p>
+                <p>2. Publica tu sitio web.</p>
+                <p>3. Configura copias de seguridad regulares.</p>
+                <p>4. Planifica actualizaciones periódicas de contenido.</p>
+                <p>5. Utiliza el soporte gratuito de Odoo para resolver dudas o problemas.</p>
+                <p><strong>Tiempo en el video:</strong> 22:00 - 24:21</p>
+            `,
+            workbook: `
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700">Frecuencia de actualizaciones planeada:</label>
+                    <select class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                        <option>Semanal</option>
+                        <option>Quincenal</option>
+                        <option>Mensual</option>
+                        <option>Trimestral</option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700">Notas para mantenimiento:</label>
+                    <textarea class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" rows="3"></textarea>
+                </div>
+            `
+        }
+    ];
+
+    let currentStep = 0;
+
+    function renderStepNavigation() {
+        const container = document.getElementById('step-navigation');
+        container.innerHTML = steps.map((step, index) => `
+            <button onclick="goToStep(${index})" class="px-3 py-1 rounded-full ${currentStep === index ? 'bg-indigo-600 text-white' : 'bg-gray-200 text-gray-700'} hover:bg-indigo-500 hover:text-white transition duration-300">
+                ${index + 1}
+            </button>
+        `).join('');
+    }
+
+    function renderStepContent() {
+        const container = document.getElementById('step-content');
+        container.innerHTML = `
+            <h3 class="text-xl font-semibold mb-2 text-indigo-600">${steps[currentStep].title}</h3>
+            <div class="prose">${steps[currentStep].content}</div>
+        `;
+    }
+
+    function renderWorkbookContent() {
+        const container = document.getElementById('workbook-content');
+        container.innerHTML = steps.map((step, index) => `
+            <div class="mb-6">
+                <h4 class="text-lg font-semibold mb-2 text-indigo-600">${index + 1}. ${step.title}</h4>
+                ${step.workbook}
+            </div>
+        `).join('');
+    }
+
+    function goToStep(stepIndex) {
+        currentStep = stepIndex;
+        renderStepNavigation();
+        renderStepContent();
+    }
+
+    function goToTimestamp() {
+        const timestamp = document.getElementById('timestamp').value;
+        const iframe = document.querySelector('iframe');
+        iframe.src = `https://www.youtube.com/embed/EqNhQzyXKNI?start=${timestamp * 60}`;
+    }
+
+    function printWorkbook() {
+        const workbookContent = document.getElementById('workbook-content').innerHTML;
+        const printWindow = window.open('', '_blank');
+        printWindow.document.write('<html><head><title>Workbook: Creación de Página Web con Odoo</title>');
+        printWindow.document.write('<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">');
+        printWindow.document.write('</head><body class="p-8">');
+        printWindow.document.write('<h1 class="text-3xl font-bold mb-6">Workbook: Creación de Página Web con Odoo</h1>');
+        printWindow.document.write(workbookContent);
+        printWindow.document.write('</body></html>');
+        printWindow.document.close();
+        printWindow.print();
+    }
+
+    // Inicialización
+    renderStepNavigation();
+    renderStepContent();
+    renderWorkbookContent();
+</script>
+
+</body>
+</html>
